@@ -5,8 +5,13 @@ window.addEventListener('load', function(){
     canvas.height = 720;
 
     class Player {
-        constructor(){
-
+        constructor(game){
+            this.game = game;            
+        }
+        draw(context){
+            context.beginPath();
+            context.arc(100, 100, 50, 0, Math.PI * 2);
+            context.fill();
         }
     }
 
@@ -14,9 +19,17 @@ window.addEventListener('load', function(){
         constructor(canvas){
             this.canvas = canvas;
             this.width = this.canvas.width;
-            
+            this.height =  this.canvas.height;
+            this.player = new Player(this);            
+        }
+        render(context){
+            this.player.draw(context);
         }
     }
+
+    const game = new Game(canvas);
+    game.render(ctx);
+    console.log(game);
 
     function animate(){
 
