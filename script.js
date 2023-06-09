@@ -31,7 +31,17 @@ window.addEventListener('load', function(){
             this.canvas = canvas;
             this.width = this.canvas.width;
             this.height =  this.canvas.height;
-            this.player = new Player(this);            
+            this.player = new Player(this);    
+            this.mouse = {
+                x: this.width * 0.5,
+                y: this.height * 0.5,
+                pressed: false
+            }
+            
+            // event listeners
+            window.addEventListener('mousedown', function(e){
+                console.log(e.offsetX, e.offsetY)
+            });
         }
         render(context){
             this.player.draw(context);
