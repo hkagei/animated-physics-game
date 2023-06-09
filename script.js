@@ -39,8 +39,20 @@ window.addEventListener('load', function(){
             }
             
             // event listeners
-            window.addEventListener('mousedown', function(e){
-                console.log(e.offsetX, e.offsetY)
+            canvas.addEventListener('mousedown', (e) => {
+                this.mouse.x = e.offsetX;
+                this.mouse.y = e.offsetY;
+                this.mouse.pressed = true;
+            });
+            canvas.addEventListener('mouseup', (e) => {
+                this.mouse.x = e.offsetX;
+                this.mouse.y = e.offsetY;
+                this.mouse.pressed = false;
+            });
+            canvas.addEventListener('mousemove', (e) => {
+                this.mouse.x = e.offsetX;
+                this.mouse.y = e.offsetY;
+                console.log(this.mouse.x)
             });
         }
         render(context){
